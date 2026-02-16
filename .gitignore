@@ -6,3 +6,6 @@ venv/
 postgres_data/
 .vscode/
 .idea/
+venv/
+.env
+__pycache__/
