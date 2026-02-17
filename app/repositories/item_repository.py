@@ -3,8 +3,8 @@ from typing import Optional, List
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.item import Item
-from app.schemas.item import ItemCreate, ItemUpdate
-from app.crud.baserepository import BaseRepository
+from app.schemas.item_schema import ItemCreate, ItemUpdate
+from app.repositories.base_repository import BaseRepository
 
 
 class ItemRepository(BaseRepository[Item]):
@@ -32,3 +32,4 @@ class ItemRepository(BaseRepository[Item]):
 
     async def delete(self, item_id: int) -> Optional[Item]:
         return await super().delete(item_id)
+
