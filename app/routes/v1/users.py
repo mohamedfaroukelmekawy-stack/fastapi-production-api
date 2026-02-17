@@ -29,9 +29,9 @@ from fastapi import (
 )
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.schemas.register import UserCreate, UserOut
-from app.crud.baseregister import UserRepository
 from app.core.database import db_factory
+from app.repositories.user_repository import UserRepository
+from app.schemas.user_schema import UserCreate, UserOut
 
 router = APIRouter(prefix="/register", tags=["register"])
 

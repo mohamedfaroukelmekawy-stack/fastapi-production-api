@@ -63,16 +63,12 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
         yield session
 
 
-############
-from typing import AsyncGenerator
-from sqlalchemy.ext.asyncio import AsyncSession
-
-
 # Dependency expected by security.py
 async def get_chosen_db() -> AsyncGenerator[AsyncSession, None]:
     async with async_session_factory() as session:
         yield session
-################
+
+
 class DummyFactory:
     async def get_session(self, db_type: str = "supabase"):
         async with async_session_factory() as session:
