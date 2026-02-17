@@ -41,6 +41,7 @@
 # src/api/auth.py    (or src/routers/login.py – adjust filename as needed)
 
 from datetime import timedelta
+
 from fastapi import (
     APIRouter,
     Depends,
@@ -51,11 +52,11 @@ from fastapi import (
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.database import db_factory
-from app.crud.baseregister import UserRepository
-from app.core.security import verify_password, create_access_token
-from app.schemas.token import Token
 from app.core.config import ACCESS_TOKEN_EXPIRE_MINUTES
+from app.core.database import db_factory
+from app.core.security import create_access_token, verify_password
+from app.repositories.user_repository import UserRepository
+from app.schemas.auth_schema import Token
 
 router = APIRouter(prefix="/login", tags=["login"])
 

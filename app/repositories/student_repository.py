@@ -1,11 +1,10 @@
-# src/crud/student.py
 from typing import List, Optional
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.student import Student
-from app.schemas.student import StudentCreate, StudentUpdate
-from app.crud.baserepository import BaseRepository
+from app.schemas.student_schema import StudentCreate, StudentUpdate
+from app.repositories.base_repository import BaseRepository
 
 
 class StudentRepository(BaseRepository[Student]):

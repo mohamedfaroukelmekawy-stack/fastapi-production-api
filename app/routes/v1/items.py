@@ -93,6 +93,8 @@
 # src/api/items.py   (or src/routers/items.py)
 # src/api/items.py
 
+from typing import List
+
 from fastapi import (
     APIRouter,
     Depends,
@@ -101,11 +103,10 @@ from fastapi import (
     status,
 )
 from sqlalchemy.ext.asyncio import AsyncSession
-from typing import List
 
-from app.schemas.item import ItemCreate, ItemUpdate, ItemOut
-from app.crud.baseitem import ItemRepository
 from app.core.database import db_factory
+from app.repositories.item_repository import ItemRepository
+from app.schemas.item_schema import ItemCreate, ItemOut, ItemUpdate
 
 router = APIRouter(prefix="/items", tags=["items"])
 

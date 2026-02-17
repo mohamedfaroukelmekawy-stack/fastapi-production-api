@@ -1,6 +1,14 @@
-# src/crud/__init__.py
-from .basestudent import StudentRepository
-from .baseitem import ItemRepository
-from .baseregister import UserRepository
+from .base_repository import BaseRepository
+from .student_repository import StudentRepository
+from .item_repository import ItemRepository
+from .user_repository import UserRepository
+from .chat_history_repository import ChatHistoryRepository
 
-__all__ = ["StudentRepository", "ItemRepository", "UserRepository"]
+__all__ = [
+    "BaseRepository",
+    "StudentRepository",
+    "ItemRepository",
+    "UserRepository",
+    "ChatHistoryRepository",
+]
+
