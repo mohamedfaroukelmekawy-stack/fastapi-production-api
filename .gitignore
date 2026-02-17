@@ -1,13 +1,18 @@
 # Virtual Environment
 venv/
 fastapi_utils/
+
+# Python
 __pycache__/
 *.pyc
 *.pyo
+*.log
 
 # Env
 .env
 
 # VS Code
 .vscode/
+
+# IDE
 .idea/
