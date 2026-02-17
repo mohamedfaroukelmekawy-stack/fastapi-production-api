@@ -4,6 +4,10 @@ from datetime import datetime
 from typing import TYPE_CHECKING
 from app.core.database import Base
 
+if TYPE_CHECKING:
+    from app.models.chat_history import ChatHistory
+
+
 class User(Base):
     __tablename__ = "users"
 
@@ -46,6 +50,9 @@ class User(Base):
         default=datetime.utcnow,
         onupdate=datetime.utcnow,
     )
+
+    # Relationship: One user can have many chat histories
+    chat_histories: Mapped[list["ChatHistory"]] = relationship("ChatHistory", back_populates="user", cascade="all, delete-orphan")
 
     def __repr__(self) -> str:
         return f"<User(id={self.id}, username={self.username!r}, email={self.email!r}, is_active={self.is_active})>"

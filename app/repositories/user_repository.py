@@ -2,13 +2,12 @@ from typing import Optional
 
 from sqlalchemy import select, or_
 from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import HTTPException, status
 
 from app.core.config import pwd_context
-
 from app.models.register import User
-from app.schemas.register import UserCreate
-from app.crud.baserepository import BaseRepository
-from fastapi import HTTPException, status
+from app.schemas.user_schema import UserCreate
+from app.repositories.base_repository import BaseRepository
 
 
 class UserRepository(BaseRepository[User]):
@@ -27,21 +26,15 @@ class UserRepository(BaseRepository[User]):
         )
         result = await self.session.execute(stmt)
         existing = result.scalar_one_or_none()
+
         if existing:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="User with given email or username already exists",
             )
 
-        # Hash password
-        # try:
+        # Hash password (bcrypt safe length = 72)
         password_hash = pwd_context.hash(user_data.password[:72])
-
-        # except Exception:
-        #     # Fallback (should not happen if passlib installed)
-        #     from hashlib import sha256
-
-        #     password_hash = sha256(user_data.password.encode("utf-8")).hexdigest()
 
         payload = user_data.model_dump()
         payload.pop("password", None)
@@ -53,10 +46,13 @@ class UserRepository(BaseRepository[User]):
         stmt = select(User).where(User.username == username)
         result = await self.session.execute(stmt)
         return result.scalar_one_or_none()
-    
-    #for authentication
-    async def get_by_username_and_password (self,username:str,password:str) -> Optional[User]:
+
+    async def get_by_username_and_password(
+        self, username: str, password: str
+    ) -> Optional[User]:
         user = await self.get_by_username(username)
+
         if user and pwd_context.verify(password, user.password_hash):
             return user
+
         return None
