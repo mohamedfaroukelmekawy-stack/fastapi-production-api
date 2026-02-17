@@ -1,0 +1,26 @@
+ app/__init__.py                             |   0
+ app/core/create_tables.py                   |   1 [32m+[m
+ app/core/database.py                        |   8 [32m+[m[31m--[m
+ app/core/security.py                        | 113 [32m++++++++[m[31m---------------------------[m
+ app/main.py                                 |  21 [32m++++[m[31m---[m
+ app/models/__init__.py                      |   6 [32m++[m
+ app/models/chat_history.py                  |  54 [32m+++++++++++++++++[m
+ app/models/register.py                      |   7 [32m+++[m
+ app/repositories/__init__.py                |  18 [32m++++[m[31m--[m
+ app/repositories/chat_history_repository.py |  71 [32m++++++++++++++++++++++[m
+ app/repositories/item_repository.py         |   5 [32m+[m[31m-[m
+ app/repositories/student_repository.py      |   7 [32m+[m[31m--[m
+ app/repositories/user_repository.py         |  26 [32m++++[m[31m----[m
+ app/routes/__init__.py                      |  20 [32m+++++[m[31m--[m
+ app/routes/v1/__init__.py                   |  13 [32m++++[m
+ app/routes/v1/auth.py                       |   9 [32m+[m[31m--[m
+ app/routes/v1/items.py                      |   7 [32m++[m[31m-[m
+ app/routes/v1/llm.py                        | 213 [32m+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m[31m---[m
+ app/routes/v1/students.py                   | 116 [32m++++[m[31m--------------------------------[m
+ app/routes/v1/users.py                      |   4 [32m+[m[31m-[m
+ app/schemas/__init__.py                     |  23 [32m++++++++[m
+ app/schemas/chat_history_schema.py          |  35 [32m+++++++++++[m
+ app/schemas/item_schema.py                  |   1 [32m+[m
+ app/services/__init__.py                    |   3 [32m+[m
+ requirements.txt                            |  87 [32m++++++++++++++++++++[m[31m-------[m
+ 25 files changed, 588 insertions(+), 280 deletions(-)
