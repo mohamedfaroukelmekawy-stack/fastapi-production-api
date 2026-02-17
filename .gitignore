@@ -1,8 +1,15 @@
+# Virtual Environment
+venv/
+fastapi_utils/
 __pycache__/
 *.pyc
+*.pyo
+
+# Env
 .env
-.venv
-venv/
-postgres_data/
+
+# VS Code
 .vscode/
-.idea/
+
+# Python
+*.log
